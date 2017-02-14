@@ -1,0 +1,43 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.catalog._id ? 'Edit Catalog' : 'New Catalog'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.catalogForm" class="form-horizontal" ng-submit="vm.save(vm.form.catalogForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <!--Name-->
+          <label class="control-label" for="name">Catalog Name</label>
+          <input name="name" type="text" ng-model="vm.catalog.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.catalogForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Catalog name is required.</p>
+          </div>
+          <!--Description-->
+          <label class="control-label" for="description">Catalog Description</label>
+          <input name="description" type="text" ng-model="vm.catalog.description" id="description" class="form-control" placeholder="Description" required>
+          <div ng-messages="vm.form.catalogForm.description.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Catalog description is required.</p>
+          </div>   
+          <!--Category-->
+          <label class="control-label" for="category">Category</label>
+          <select class="form-control" id="category" name="category" placeholder="category" required>
+            <option>Art</option>
+            <option>Electronics</option>
+            <option>Tools</option>
+            <option>Autos</option>
+            <option>Appliances</option>
+          </select>
+          <div ng-messages="vm.form.catalogForm.category.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Catalog category is required.</p>
+          </div> 
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.catalog._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

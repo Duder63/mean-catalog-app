@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Catalogs</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="catalog in vm.catalogs"
+       ui-sref="catalogs.view({ catalogId: catalog._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Created on
+        <span ng-bind="catalog.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="catalog.user" ng-bind="catalog.user.displayName"></span>
+        <span ng-if="!catalog.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="catalog.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.catalogs.$resolved && !vm.catalogs.length">
+    No Catalogs yet, why don't you <a ui-sref="catalogs.create">create one</a>?
+  </div>
+</section>
