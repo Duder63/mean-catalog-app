@@ -20,7 +20,7 @@
         controller: 'CatalogsListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Catalogs List'
+          pageTitle: 'List of Your Catalogs'
         }
       })
       .state('catalogs.create', {
@@ -33,7 +33,7 @@
         },
         data: {
           roles: ['user', 'admin'],
-          pageTitle: 'Catalogs Create'
+          pageTitle: 'Create a Catalog'
         }
       })
       .state('catalogs.edit', {
@@ -58,7 +58,7 @@
           catalogResolve: getCatalog
         },
         data: {
-          pageTitle: 'Catalog {{ catalogResolve.name }}'
+          pageTitle: 'Your Catalog {{ catalogResolve.name }}'
         }
       });
   }
