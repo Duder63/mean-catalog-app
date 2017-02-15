@@ -16,6 +16,12 @@ var CatalogSchema = new Schema({
     required: 'Please fill Catalog name',
     trim: true
   },
+  description: {
+    type: String,
+    default: '',
+    required: 'Please fill Catalog description',
+    trim: true
+  },  
   created: {
     type: Date,
     default: Date.now
