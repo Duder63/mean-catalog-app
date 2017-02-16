@@ -22,9 +22,9 @@ var CatalogSchema = new Schema({
     required: 'Please fill description',
     trim: true
   },  
-  urlimage: {
+  catalogImageURL: {
     type: String,
-    trim: true
+    default: 'modules/catalogs/client/img/saveme-placeholder.png'
   },
   manufacturer: {
     type: String,

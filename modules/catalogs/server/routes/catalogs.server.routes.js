@@ -8,6 +8,7 @@ var catalogsPolicy = require('../policies/catalogs.server.policy'),
 
 module.exports = function(app) {
 
+  app.route('/api/catalogs/picture').post(catalogs.changeCatalogPicture);
 
   // Catalogs Routes
   app.route('/api/catalogs').all(catalogsPolicy.isAllowed)
