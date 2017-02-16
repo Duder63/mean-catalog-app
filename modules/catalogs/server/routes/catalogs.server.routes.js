@@ -7,6 +7,8 @@ var catalogsPolicy = require('../policies/catalogs.server.policy'),
   catalogs = require('../controllers/catalogs.server.controller');
 
 module.exports = function(app) {
+
+
   // Catalogs Routes
   app.route('/api/catalogs').all(catalogsPolicy.isAllowed)
     .get(catalogs.list)

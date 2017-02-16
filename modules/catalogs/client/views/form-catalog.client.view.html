@@ -1,41 +1,79 @@
 <section>
   <div class="page-header">
-    <h1>{{vm.catalog._id ? 'Edit Catalog' : 'Create Your New Catalog'}}</h1>
+    <h1>{{vm.catalog._id ? 'Edit Catalog' : 'New Catalogue Item'}}</h1>
   </div>
   <div class="col-md-12">
     <form name="vm.form.catalogForm" class="form-horizontal" ng-submit="vm.save(vm.form.catalogForm.$valid)" novalidate>
       <fieldset>
-        <div class="form-group" show-errors>
-          <!--Name-->
-          <label class="control-label" for="name">Catalog Name</label>
-          <input name="name" type="text" ng-model="vm.catalog.name" id="name" class="form-control" placeholder="Name" required>
-          <div ng-messages="vm.form.catalogForm.name.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Catalog name is required.</p>
+        <div class="col-md-6">
+          <div class="form-group form-createCatalogItem" show-errors>
+            <!--Name-->
+            <label class="control-label" for="name">Name</label>
+            <input name="name" type="text" ng-model="vm.catalog.title" id="name" class="form-control" placeholder="Name" required>
+            <div ng-messages="vm.form.catalogForm.name.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Name is required.</p>
+            </div>
+            <!--Description-->
+            <label class="control-label" for="description">Description</label>
+            <textarea name="description" type="text" ng-model="vm.catalog.description" id="description" class="form-control" placeholder="Description" required></textarea>
+            <!-- <text-angular
+              ta-toolbar="[['bold','italics', 'underline', 'strikeThrough'],['justifyLeft', 'justifyCenter', 'justifyRight'], ['insertLink', 'undo'],['charcount']]"
+              id="description" name="description" data-ng-model="vm.catalog.description">
+            </text-angular>  -->         
+            <div ng-messages="vm.form.catalogForm.description.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Description is required.</p>
+            </div> 
+            <div class="col-md-12 item-image-upload">
+            <!-- uploadImage Box -->
+              <!-- <div class="col-md-7 item-image-details">
+                <div class="manual-upload" ng-show="urlimage.length === undefined">
+                  <label class="control-label" for="urlimage">Image Upload</label>
+                  <div class="text-center form-group controls" ng-hide="uploaderProductCoffee.queue.length">
+                          <span class="btn btn-default btn-file">
+                              Select Image <input type="file" nv-file-select uploader="uploaderProductCoffee">
+                          </span>
+                  </div>
+                  <div class="sub-label">Upload a photo</div>
+                  </br>
+                  <div class="text-center form-group-coffee" ng-show="uploaderProductCoffee.queue.length">
+                    <button class="btn btn-primary" ng-click="uploadProductPictureCoffee();">Upload</button>
+                    <button class="btn btn-default" ng-click="cancelProductUploadCoffee();">Delete</button>
+                  </div>
+                  <div ng-show="success" class="text-center text-success">
+                    <strong>Upload Successful</strong>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-md-5 item-image-preview">
+                <img ng-src="{{coffeeImageURL}}" class="img-thumbnail product-upload-picture">
+              </div> -->
+            </div>
           </div>
-          <!--Description-->
-          <label class="control-label" for="description">Catalog Description</label>
-          <input name="description" type="text" ng-model="vm.catalog.description" id="description" class="form-control" placeholder="Description" required>
-          <div ng-messages="vm.form.catalogForm.description.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Catalog description is required.</p>
-          </div>   
-          <!--Category-->
-          <!-- <label class="control-label" for="category">Category</label>
-          <select class="form-control" id="category" name="category" placeholder="category" required>
-            <option>Art</option>
-            <option>Electronics</option>
-            <option>Tools</option>
-            <option>Autos</option>
-            <option>Appliances</option>
-          </select>
-          <div ng-messages="vm.form.catalogForm.category.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Catalog category is required.</p>
-          </div> --> 
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.catalog._id ? 'Update' : 'Create'}}</button>
-        </div>
-        <div ng-show="vm.error" class="text-danger">
-          <strong ng-bind="vm.error"></strong>
+        <div class="col-md-6">
+          <div class="form-group form-createCatalogItem" show-errors>    
+            <!--Manufacturer-->
+            <label class="control-label" for="serialnumber">Manufacturer</label>
+            <input name="manufacturer" type="text" ng-model="vm.catalog.manufacturer" id="manufacturer" class="form-control" placeholder="Manufacturer">
+             <!--Model-->
+            <label class="control-label" for="modelnumber">Model Number</label>
+            <input name="modelnumber" type="text" ng-model="vm.catalog.modelnumber" id="modelnumber" class="form-control" placeholder="Model Number">         
+            <!--S/N-->
+            <label class="control-label" for="serialnumber">Serial Number</label>
+            <input name="serialnumber" type="text" ng-model="vm.catalog.serialnumber" id="serialnumber" class="form-control" placeholder="Serial Number">
+            <!-- Purchase Date -->
+            <label class="control-label" for="purchaseDate">Date Puchased</label>
+            <datepicker ng-model="vm.catalog.purchaseDate" id="purchaseDate" show-weeks="false" class="well well-sm"></datepicker> 
+            <!-- Purchase Price / Value -->
+            <label class="control-label" for="itemValue">Value <small class="text-muted">(or purchase price)</small></label>
+            <input name="itemValue" type="text" ng-model="vm.catalog.itemValue" id="itemValue" class="form-control" placeholder="Value or purchase price">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-default">{{vm.catalog._id ? 'Update' : 'Create'}}</button>
+          </div>
+          <div ng-show="vm.error" class="text-danger">
+            <strong ng-bind="vm.error"></strong>
+          </div>
         </div>
       </fieldset>
     </form>

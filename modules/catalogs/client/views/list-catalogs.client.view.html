@@ -3,7 +3,7 @@
     <h1>Catalogs</h1>
   </div>
   <div class="list-group">
-    <a ng-repeat="catalog in vm.catalogs"
+    <a ng-repeat="catalog in vm.catalogs" ng-if="vm.user._id==catalog.user._id"
        ui-sref="catalogs.view({ catalogId: catalog._id })"
        class="list-group-item">
       <small class="list-group-item-text">

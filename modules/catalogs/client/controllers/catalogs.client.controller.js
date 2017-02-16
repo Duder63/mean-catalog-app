@@ -6,9 +6,9 @@
     .module('catalogs')
     .controller('CatalogsController', CatalogsController);
 
-  CatalogsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'catalogResolve'];
+  CatalogsController.$inject = ['$scope', '$http', '$timeout', '$state', '$window', 'Authentication', 'FileUploader', 'catalogResolve'];
 
-  function CatalogsController ($scope, $state, $window, Authentication, catalog) {
+  function CatalogsController ($scope, $http, $timeout, $state, $location, $window, Authentication, FileUploader, catalog) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -49,5 +49,8 @@
         vm.error = res.data.message;
       }
     }
+
   }
 }());
+
+
