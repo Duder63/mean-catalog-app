@@ -12,7 +12,10 @@
       .state('catalogs', {
         abstract: true,
         url: '/catalogs',
-        template: '<ui-view/>'
+        template: '<ui-view/>',
+        data: {
+          roles: ['user', 'admin']
+        }
       })
       .state('catalogs.list', {
         url: '',

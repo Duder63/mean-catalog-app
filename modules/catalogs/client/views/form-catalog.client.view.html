@@ -3,13 +3,13 @@
     <h1>{{vm.catalog._id ? 'Edit Catalog' : 'New Catalogue Item'}}</h1>
   </div>
   <div class="col-md-12">
-    <form name="vm.form.catalogForm" class="form-horizontal" ng-submit="vm.save(vm.form.catalogForm.$valid)" novalidate>
+    <form id="catalogForm" name="vm.form.catalogForm" class="form-horizontal" ng-submit="vm.save(vm.form.catalogForm.$valid)" novalidate>
       <fieldset>
         <div class="col-md-6">
           <div class="form-group form-createCatalogItem" show-errors>
             <!--Name-->
             <label class="control-label" for="name">Name</label>
-            <input name="name" type="text" ng-model="vm.catalog.title" id="name" class="form-control" placeholder="Name" required>
+            <input name="name" type="text" ng-model="vm.catalog.name" id="name" class="form-control" placeholder="Name" required>
             <div ng-messages="vm.form.catalogForm.name.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Name is required.</p>
             </div>
@@ -23,29 +23,30 @@
             <div ng-messages="vm.form.catalogForm.description.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Description is required.</p>
             </div> 
+
+            <!--Category-->
+            <label class="control-label" for="category">Category</label>
+            <select class="form-control" ng-model="vm.catalog.category">
+              <option value="" selected=""><span class="text-muted">Select a Category</span></option>
+              <option value="Appliances">Appliances</option>
+              <option value="Electronics">Electronics</option>
+              <option value="General Household">General Household</option>
+              <option value="Collector Items &amp; Hobbies">Collector Items &amp; Hobbies</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Jewelry">Jewelry</option>
+              <option value="Sports Equipment">Sports Equipment</option>
+              <option value="Tools">Tools</option>
+              <option value="Miscellaneous">Miscellaneous</option>
+            </select>
+
             <div class="col-md-12 item-image-upload">
             <!-- uploadImage Box -->
               <!-- <div class="col-md-7 item-image-details">
-                <div class="manual-upload" ng-show="urlimage.length === undefined">
-                  <label class="control-label" for="urlimage">Image Upload</label>
-                  <div class="text-center form-group controls" ng-hide="uploaderProductCoffee.queue.length">
-                          <span class="btn btn-default btn-file">
-                              Select Image <input type="file" nv-file-select uploader="uploaderProductCoffee">
-                          </span>
-                  </div>
-                  <div class="sub-label">Upload a photo</div>
-                  </br>
-                  <div class="text-center form-group-coffee" ng-show="uploaderProductCoffee.queue.length">
-                    <button class="btn btn-primary" ng-click="uploadProductPictureCoffee();">Upload</button>
-                    <button class="btn btn-default" ng-click="cancelProductUploadCoffee();">Delete</button>
-                  </div>
-                  <div ng-show="success" class="text-center text-success">
-                    <strong>Upload Successful</strong>
-                  </div>
+
                 </div>
               </div> 
               <div class="col-md-5 item-image-preview">
-                <img ng-src="{{coffeeImageURL}}" class="img-thumbnail product-upload-picture">
+ 
               </div> -->
             </div>
           </div>
@@ -61,15 +62,28 @@
             <!--S/N-->
             <label class="control-label" for="serialnumber">Serial Number</label>
             <input name="serialnumber" type="text" ng-model="vm.catalog.serialnumber" id="serialnumber" class="form-control" placeholder="Serial Number">
-            <!-- Purchase Date -->
-            <label class="control-label" for="purchaseDate">Date Puchased</label>
-            <datepicker ng-model="vm.catalog.purchaseDate" id="purchaseDate" show-weeks="false" class="well well-sm"></datepicker> 
-            <!-- Purchase Price / Value -->
-            <label class="control-label" for="itemValue">Value <small class="text-muted">(or purchase price)</small></label>
-            <input name="itemValue" type="text" ng-model="vm.catalog.itemValue" id="itemValue" class="form-control" placeholder="Value or purchase price">
+
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Purchase Date -->
+                <label class="control-label" for="purchaseDate">Date Puchased</label>
+                <!-- <datepicker ng-model="vm.catalog.purchaseDate" id="purchaseDate" show-weeks="false" class="well well-sm"></datepicker> --> 
+                <!-- <input type="date" name="purchaseDate" ng-model="vm.catalog.purchaseDate" id="purchaseDate" class="form-control" placeholder="mm/dd/yyy"> -->
+                <!-- <md-datepicker ng-model="vm.catalog.purchaseDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker> -->
+                <!-- <input time="false" date="true" mdc-datetime-picker="" type="text" id="purchaseDate" placeholder="Date" ng-model="vm.catalog.purchaseDate" min-date="minDate" max-date="maxDate" class="form-control"> -->
+                <input type="date" name="purchaseDate" ng-model="vm.catalog.purchaseDate" id="datepicker" class="form-control" format="dd/MM/yyyy" placeholder="mm/dd/yyy">
+              </div>
+              <div class="col-md-6">
+                <!-- Purchase Price / Value -->
+                <label class="control-label" for="itemValue">Value <small class="text-muted">(or purchase price)</small></label>
+                <input name="itemValue" type="number" step="0.01" ng-model="vm.catalog.itemValue" id="itemValue" class="form-control" placeholder="$0.00">
+              </div>
+            </div>
+
           </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-default">{{vm.catalog._id ? 'Update' : 'Create'}}</button>
+          <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-primary">{{vm.catalog._id ? 'Update' : 'Create'}}</button>&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-default btn-sm" type="reset" value="reset">Reset</button>
           </div>
           <div ng-show="vm.error" class="text-danger">
             <strong ng-bind="vm.error"></strong>
@@ -79,3 +93,5 @@
     </form>
   </div>
 </section>
+
+

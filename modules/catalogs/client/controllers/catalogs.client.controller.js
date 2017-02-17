@@ -6,7 +6,7 @@
     .module('catalogs')
     .controller('CatalogsController', CatalogsController);
 
-  CatalogsController.$inject = ['$scope', '$http', '$timeout', '$state', '$window', 'Authentication', 'FileUploader', 'catalogResolve'];
+  CatalogsController.$inject = ['$scope', '$http', '$timeout', '$state', '$location', '$window', 'Authentication', 'FileUploader', 'catalogResolve'];
 
   function CatalogsController ($scope, $http, $timeout, $state, $location, $window, Authentication, FileUploader, catalog) {
     var vm = this;
@@ -17,6 +17,7 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+
 
     // Remove existing Catalog
     function remove() {
@@ -40,7 +41,7 @@
       }
 
       function successCallback(res) {
-        $state.go('catalogs.view', {
+        $state.go('catalogs.list', {
           catalogId: res._id
         });
       }
@@ -49,6 +50,7 @@
         vm.error = res.data.message;
       }
     }
+
 
   }
 }());

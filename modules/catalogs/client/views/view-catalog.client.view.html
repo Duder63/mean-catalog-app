@@ -1,26 +1,39 @@
 <section>
   <div class="page-header">
-    <h1 ng-bind="vm.catalog.name"></h1>
+    
   </div>
-  <div class="pull-right"
-       ng-show="vm.catalog.isCurrentUserOwner">
-    <a class="btn btn-primary"
-       ui-sref="catalogs.edit({ catalogId: vm.catalog._id })">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
+  <div class="row">
+    <div class="col-md-12">
+      <h3 ng-bind="vm.catalog.name"></h3>
+      <p ng-bind="vm.catalog.description"></p>
+      <p ng-bind="vm.catalog.category"></p>
+      <p ng-bind="vm.catalog.manufacturer"></p>
+      <p ng-bind="vm.catalog.modelnumber"></p>
+      <p ng-bind="vm.catalog.serialnumber"></p>
+      <p ng-bind="vm.catalog.purchaseDate"></p>
+      <p ng-bind="vm.catalog.itemValue"></p>
+      <small>
+        <em class="text-muted">
+          Created on
+          <span ng-bind="vm.catalog.created | date:'mediumDate'"></span>
+          by
+          <span ng-if="vm.catalog.user"
+                ng-bind="vm.catalog.user.displayName"></span>
+          <span ng-if="!vm.catalog.user">Deleted User</span>
+        </em>
+      </small>
+      <div class="clearfix">&nbsp;</div>
+      <div class="pull-left"
+           ng-show="vm.catalog.isCurrentUserOwner">
+          <a class="btn btn-primary"
+           ui-sref="catalogs.edit({ catalogId: vm.catalog._id })">
+          <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn btn-primary" ng-click="vm.remove()">
+          <i class="glyphicon glyphicon-trash"></i>
+        </a>
+      </div>      
+    </div>
   </div>
-  <small>
-    <em class="text-muted">
-      Created on
-      <span ng-bind="vm.catalog.created | date:'mediumDate'"></span>
-      by
-      <span ng-if="vm.catalog.user"
-            ng-bind="vm.catalog.user.displayName"></span>
-      <span ng-if="!vm.catalog.user">Deleted User</span>
-    </em>
-  </small>
-  <p class="lead" ng-bind="vm.catalog.content"></p>
+  
 </section>

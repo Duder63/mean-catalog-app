@@ -22,29 +22,39 @@ var CatalogSchema = new Schema({
     required: 'Please fill description',
     trim: true
   },  
+  category: {
+    type: String,
+    default: '',
+    trim: true
+  },
   urlimage: {
     type: String,
     trim: true
   },
   manufacturer: {
     type: String,
+    default: '',
     trim: true
   },
   modelnumber: {
     type: String,
+    default: '',
     trim: true
   },
   serialnumber: {
     type: String,
+    default: '',
     trim: true
   },
   purchaseDate: {
     type: Date,
-    default: Date.now
+    default: ''
+    // default: Date.now
   },
   itemValue: {
     type: Number,
     trim: true,
+    default: '',
     min: 0,
     max: 1000000
   },
