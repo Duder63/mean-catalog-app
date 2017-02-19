@@ -19,7 +19,7 @@
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'catalogs', {
-      title: 'List Catalogs',
+      title: 'List Catalog Entries',
       state: 'catalogs.list'
     });
 

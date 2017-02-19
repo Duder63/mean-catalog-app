@@ -6,6 +6,7 @@ module.exports = {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+        // 'public/lib/textAngular/dist/textAngular.css',
         'public/lib/font-awesome/css/font-awesome.css'
       ],
       js: [
@@ -21,11 +22,10 @@ module.exports = {
 
         // 'public/lib/textAngular/dist/textAngular-rangy.min.js',
         // 'public/lib/textAngular/dist/textAngular-sanitize.min.js',
-        // 'public/lib/textAngular/dist/textAngularSetup.js',
-
-        // 'public/lib/textAngular/dist/textAngular.min.js',
+        // 'public/lib/textAngular/dist/textAngular.min.js'
 
         // 'public/js/datepicker.js'
+        // 'public/js/refresh-once.js'
 
 
       ],

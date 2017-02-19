@@ -1,9 +1,11 @@
 <section>
   <div class="page-header">
-    <h1>Your Catalogs <span ng-show="vm.user._id!==undefined">{{user.displayName}}</span></h1>
+    <h1>Your Catalog Entries</h1>
   </div>
 
-  <div id="your-catalog-list" class="list-group">
+  <div id="your-catalog-list" class="" style="margin-top:-10px;">
+  <div class="col-md-12"><button type="submit" class="btn btn-primary btn-sm" ui-sref="catalogs.create">Create a New Catalog Entry</button></div>
+  <div class="clearfix">&nbsp;</div>
     <div>
       <a ng-repeat="catalog in vm.catalogs" ng-if="vm.user._id==catalog.user._id"
          ui-sref="catalogs.view({ catalogId: catalog._id })"
@@ -28,9 +30,11 @@
       </div>
     </div>
 
-    <div class="alert alert-warning text-center" ng-if="vm.catalogs.$resolved && !vm.catalogs.length">
+    <div class="alert alert-warning text-center" ng-if="vm.catalogs.$resolved  && !vm.catalogs.length || !vm.user._id==catalog.user._id">
       No Catalogs yet, why don't you <a ui-sref="catalogs.create">create one</a>?
     </div>
   </div>
 </section>
+
+
 

@@ -3,7 +3,7 @@
   angular.module('CatalogsController', [
     'ngMaterialDatePicker'
   ])
-    .controller('DemoCtrl', function ($scope, mdcDateTimeDialog) {
+    .controller('CatalogsController', function ($scope, mdcDateTimeDialog) {
       $scope.date = new Date();
       $scope.time = new Date();
       $scope.dateTime = new Date();

@@ -6,6 +6,7 @@
     .module('catalogs')
     .controller('CatalogsController', CatalogsController);
 
+
   CatalogsController.$inject = ['$scope', '$http', '$timeout', '$state', '$location', '$window', 'Authentication', 'FileUploader', 'catalogResolve'];
 
   function CatalogsController ($scope, $http, $timeout, $state, $location, $window, Authentication, FileUploader, catalog) {

@@ -16,10 +16,8 @@
             <!--Description-->
             <label class="control-label" for="description">Description</label>
             <textarea name="description" type="text" ng-model="vm.catalog.description" id="description" class="form-control" placeholder="Description" required></textarea>
-            <!-- <text-angular
-              ta-toolbar="[['bold','italics', 'underline', 'strikeThrough'],['justifyLeft', 'justifyCenter', 'justifyRight'], ['insertLink', 'undo'],['charcount']]"
-              id="description" name="description" data-ng-model="vm.catalog.description">
-            </text-angular>  -->         
+            <!-- <div text-angular ta-toolbar="[['bold','italics', 'underline', 'strikeThrough'],['justifyLeft', 'justifyCenter', 'justifyRight'], ['insertLink', 'undo'],['charcount']]" id="description" name="description" data-ng-model="vm.catalog.description">
+            </div> -->          
             <div ng-messages="vm.form.catalogForm.description.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Description is required.</p>
             </div> 
@@ -57,7 +55,7 @@
             <label class="control-label" for="serialnumber">Manufacturer</label>
             <input name="manufacturer" type="text" ng-model="vm.catalog.manufacturer" id="manufacturer" class="form-control" placeholder="Manufacturer">
              <!--Model-->
-            <label class="control-label" for="modelnumber">Model Number</label>
+            <label class="control-label" for="modelnumber">Model <small class="text-muted">(or model number)</label>
             <input name="modelnumber" type="text" ng-model="vm.catalog.modelnumber" id="modelnumber" class="form-control" placeholder="Model Number">         
             <!--S/N-->
             <label class="control-label" for="serialnumber">Serial Number</label>
@@ -83,7 +81,7 @@
           </div>
           <div class="form-group col-md-12">
             <button type="submit" class="btn btn-primary">{{vm.catalog._id ? 'Update' : 'Create'}}</button>&nbsp;&nbsp;&nbsp;
-            <button class="btn btn-default btn-sm" type="reset" value="reset">Reset</button>
+            <button class="btn btn-default btn-sm" type="reset" value="reset">Clear All</button>
           </div>
           <div ng-show="vm.error" class="text-danger">
             <strong ng-bind="vm.error"></strong>
