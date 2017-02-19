@@ -19,6 +19,8 @@ module.exports = function(app) {
     .put(catalogs.update)
     .delete(catalogs.delete);
 
+  app.route('/api/catalogs/picture').post(catalogs.changeCatalogPicture);    
+
   // Finish by binding the Catalog middleware
   app.param('catalogId', catalogs.catalogByID);
 };

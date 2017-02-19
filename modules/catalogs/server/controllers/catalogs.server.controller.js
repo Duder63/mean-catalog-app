@@ -6,6 +6,8 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Catalog = mongoose.model('Catalog'),
+  multer = require('multer'),
+  config = require(path.resolve('./config/config')),  
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -115,3 +117,54 @@ exports.catalogByID = function(req, res, next, id) {
     next();
   });
 };
+
+/**
+ * Update catalog picture
+ */
+exports.changeProfilePicture = function (req, res) {
+  var user = req.user;
+  var message = null;
+  var upload = multer(config.uploads.catalogUpload).single('newCatalogPicture');
+  var catalogUploadFileFilter = require(path.resolve('./config/lib/multer')).catalogUploadFileFilter;
+  
+  // Filtering to upload only images
+  upload.fileFilter = catalogUploadFileFilter;
+
+  if (user) {
+    upload(req, res, function (uploadError) {
+      if(uploadError) {
+        return res.status(400).send({
+          message: 'Error occurred while uploading profile picture'
+        });
+      } else {
+        user.catalogImageURL = config.uploads.catalogUpload.dest + req.file.filename;
+
+        user.save(function (saveError) {
+          if (saveError) {
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(saveError)
+            });
+          } else {
+            req.login(user, function (err) {
+              if (err) {
+                res.status(400).send(err);
+              } else {
+                res.json(user);
+              }
+            });
+          }
+        });
+      }
+    });
+  } else {
+    res.status(400).send({
+      message: 'User is not signed in'
+    });
+  }
+};
+
+
+
+
+
+
