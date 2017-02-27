@@ -27,9 +27,9 @@ var CatalogSchema = new Schema({
     default: '',
     trim: true
   },
-  urlimage: {
+  catalogImageURL: {
     type: String,
-    trim: true
+    default: 'modules/catalogs/client/img/saveme-placeholder.png'
   },
   manufacturer: {
     type: String,
@@ -48,8 +48,8 @@ var CatalogSchema = new Schema({
   },
   purchaseDate: {
     type: Date,
-    default: ''
-    // default: Date.now
+    // default: ''
+    default: Date.now
   },
   itemValue: {
     type: Number,

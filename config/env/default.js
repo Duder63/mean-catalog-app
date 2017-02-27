@@ -35,6 +35,12 @@ module.exports = {
       limits: {
         fileSize: 1*1024*1024 // Max file size in bytes (1 MB)
       }
-    }
+    },
+    catalogUpload: {
+      dest: './modules/catalogs/client/img/uploads/', // Profile upload destination path
+      limits: {
+        fileSize: 1*256*256 // Max file size in bytes (256 kb)
+      }
+    }    
   }
 };

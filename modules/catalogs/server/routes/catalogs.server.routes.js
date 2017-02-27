@@ -8,7 +8,6 @@ var catalogsPolicy = require('../policies/catalogs.server.policy'),
 
 module.exports = function(app) {
 
-
   // Catalogs Routes
   app.route('/api/catalogs').all(catalogsPolicy.isAllowed)
     .get(catalogs.list)
@@ -18,6 +17,10 @@ module.exports = function(app) {
     .get(catalogs.read)
     .put(catalogs.update)
     .delete(catalogs.delete);
+
+  app.route('/api/catalogs/picture')
+    .post(catalogs.changeCatalogPicture)
+    .put(catalogs.changeCatalogPicture);
 
   // Finish by binding the Catalog middleware
   app.param('catalogId', catalogs.catalogByID);
