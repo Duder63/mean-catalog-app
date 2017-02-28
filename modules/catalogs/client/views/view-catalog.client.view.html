@@ -2,42 +2,45 @@
   <div class="page-header">
     <button class="btn btn-default btn-sm" ui-sref="catalogs.list"><span class="glyphicon glyphicon-open" aria-hidden="true"></span>&nbsp;Go to Catalog Entries List</button>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h2 ng-bind="vm.catalog.name"></h2>
-      <small style="display:block;margin-top:-5px">
-        <em class="text-muted">
-          Created on <span ng-bind="vm.catalog.created | date:'mediumDate'"></span>
-          by <span ng-if="vm.catalog.user" ng-bind="vm.catalog.user.displayName"></span>
-          <span ng-if="!vm.catalog.user">Deleted User</span>
-        </em>
-      </small>
-    </div>
-  </div>  
-  <div class="row" style="margin-top:20px;">
-    <div class="col-md-3">
-      <label>Category</label>
-      <p ng-bind="vm.catalog.category"></p>
-      <label>Description</label>
-      <p ng-bind="vm.catalog.description"></p>
-      <label>Value <small class="text-muted">(or purchase price)</small></label>
-      <p ng-bind="vm.catalog.itemValue"></p>
-    </div>
-    <div class="col-md-3">
-      <label>Manufacturer</label>
-      <p ng-bind="vm.catalog.manufacturer"></p>
-      <label>Model <small class="text-muted">(or model number)</small></label>
-      <p ng-bind="vm.catalog.modelnumber"></p>
-      <label>Serial Number</label>
-      <p ng-bind="vm.catalog.serialnumber"></p>
-      <label>Purchase Date</label>
-      <p ng-bind="vm.catalog.purchaseDate | date:'short'"></p>
-    </div>
-    <div class="col-md-4">
-      <img class="img-responsive img-rounded" ng-src="{{vm.catalog.catalogImageURL}}" />
-    </div>
-   </div> 
-      <div class="clearfix">&nbsp;</div>
+  <div id="crud-record" class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 ng-bind="vm.catalog.name"></h2>
+          <small style="display:block;margin-top:-5px">
+            <em class="text-muted">
+              Created on <span ng-bind="vm.catalog.created | date:'mediumDate'"></span>
+              by <span ng-if="vm.catalog.user" ng-bind="vm.catalog.user.displayName"></span>
+              <span ng-if="!vm.catalog.user">Deleted User</span>
+            </em>
+          </small>
+        </div>
+      </div>  
+      <div class="row" style="margin-top:20px;">
+        <div class="col-md-4">
+          <label>Category</label>
+          <p ng-bind="vm.catalog.category"></p>
+          <label>Description</label>
+          <p ng-bind="vm.catalog.description"></p>
+          <label>Value <small class="text-muted">(or purchase price)</small></label>
+          <p ng-bind="vm.catalog.itemValue"></p>
+        </div>
+        <div class="col-md-3">
+          <label>Manufacturer</label>
+          <p ng-bind="vm.catalog.manufacturer"></p>
+          <label>Model <small class="text-muted">(or model number)</small></label>
+          <p ng-bind="vm.catalog.modelnumber"></p>
+          <label>Serial Number</label>
+          <p ng-bind="vm.catalog.serialnumber"></p>
+          <label>Purchase Date</label>
+          <p ng-bind="vm.catalog.purchaseDate | date:'short'"></p>
+        </div>
+        <div class="col-md-4">
+          <img class="img-responsive img-thumbnail pull-left" ng-src="{{vm.catalog.catalogImageURL}}" />
+        </div>
+       </div> 
+     </div>
+
+      <div class="clearfix" style="font-size: 0.3em;">&nbsp;</div>
     <div class="row">
       <div class="col-md-3 pull-left" ng-show="vm.catalog.isCurrentUserOwner">
         <a class="btn btn-primary" ui-sref="catalogs.edit({ catalogId: vm.catalog._id })">

@@ -10,7 +10,7 @@
       <a ng-repeat="catalog in vm.catalogs" ng-if="vm.user._id==catalog.user._id"
          ui-sref="catalogs.view({ catalogId: catalog._id })"
          class="list-group-item catalog-list-link col-md-4">
-         <div class="col-md-7">
+         <div class="col-md-12">
           <small class="list-group-item-text">
             <!-- Created on:<br> -->
             <span ng-bind="catalog.created | date:'mediumDate'"></span>
@@ -21,9 +21,9 @@
           <h3 class="list-group-item-heading" ng-bind="catalog.name"></h3>
           <p class="list-group-item-text" ng-bind="catalog.description"></p>
         </div>
-        <div class="col-md-5">
+        <!-- <div class="col-md-5">
          <img ng-src="{{vm.catalogImageURL}}" class="img-thumbnail img-responsive"> 
-        </div>
+        </div> -->
       </a>
       <div class="pull-right" ng-show="vm.catalog.isCurrentUserOwner">
         <a class="btn btn-primary" ui-sref="catalogs.edit({ catalogId: vm.catalog._id })">

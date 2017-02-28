@@ -1,0 +1,23 @@
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+
+.flex-item {
+  background-color: rgba(254, 235, 162, .90);
+  padding: 15px;
+  width: 320px;
+  height: 150px;
+  margin-top: 10px;
+}
