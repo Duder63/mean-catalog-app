@@ -3,6 +3,11 @@ body {
   font-size: 16px;
 }
 h1,h2 { color: #06527F; }
+h3 { color: #494949; }
+
+a {
+  color: #06527F;
+}
 
 
 /* -- NavBar -- */

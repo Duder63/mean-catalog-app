@@ -9,8 +9,8 @@ var path = require('path'),
   mongoose = require('mongoose'),
   Catalog = mongoose.model('Catalog'),
   User = mongoose.model('User'),
-  multer = require('multer'),
-  config = require(path.resolve('./config/config')),
+  // multer = require('multer'),
+  // config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -129,11 +129,11 @@ exports.changeCatalogPicture = function(req, res) {
   var user = req.user;
   var message = null;
 
-  var upload = multer(config.uploads.catalogUpload).single('newCatalogPicture');
-  var catalogUploadFileFilter = require(path.resolve('./config/lib/multer')).catalogUploadFileFilter;
+  // var upload = multer(config.uploads.catalogUpload).single('newCatalogPicture');
+  // var catalogUploadFileFilter = require(path.resolve('./config/lib/multer')).catalogUploadFileFilter;
   
   // Filtering to upload only images
-  upload.fileFilter = catalogUploadFileFilter;
+  // upload.fileFilter = catalogUploadFileFilter;
 
   if (user) {
     fs.writeFile('./modules/catalogs/client/img/uploads/' + req.files.file.name, req.files.file.buffer, function(uploadError) {
